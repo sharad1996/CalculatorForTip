@@ -6,14 +6,11 @@ const CalculatorKeypad = ({
   setTip,
   custom,
   customButton,
-  setCustomValue,
-  setCustomPercent,
   customPercent,
-  customValue,
-  tip,
   noOfPerson,
   setNoOfPerson,
   onHandleCustomPercentage,
+  predefinePercent,
 }) => {
   return (
     <div>
@@ -29,39 +26,60 @@ const CalculatorKeypad = ({
         <p className="fs-2 heading">Select Tip %</p>
         <div className="d-flex justify-content-between">
           <button
-            className="tip-amount"
+            // className=" "
+            className={
+              predefinePercent !== 5 || custom
+                ? "tip-amount"
+                : "tip-amount-active"
+            }
             type="value"
-            onClick={() => setTip(5, value)}
+            onClick={() => setTip(5, value, noOfPerson)}
           >
             5%
           </button>
           <button
-            className="tip-amount"
+            className={
+              predefinePercent !== 10 || custom
+                ? " tip-amount"
+                : "tip-amount-active"
+            }
             type="value"
-            onClick={() => setTip(10, value)}
+            onClick={() => setTip(10, value, noOfPerson)}
           >
             10%
           </button>
           <button
-            className="tip-amount"
+            className={
+              predefinePercent !== 15 || custom
+                ? "tip-amount"
+                : "tip-amount-active"
+            }
             type="value"
-            onClick={() => setTip(15, value)}
+            onClick={() => setTip(15, value, noOfPerson)}
           >
             15%
           </button>
         </div>
         <div className="mt-3 d-flex justify-content-between">
           <button
-            className="tip-amount"
+            className={
+              predefinePercent !== 25 || custom
+                ? "tip-amount"
+                : "tip-amount-active"
+            }
             type="value"
-            onClick={() => setTip(25, value)}
+            onClick={() => setTip(25, value, noOfPerson)}
           >
             25%
           </button>
           <button
-            className="tip-amount"
+            className={
+              predefinePercent !== 50 || custom
+                ? "tip-amount"
+                : "tip-amount-active"
+            }
             type="value"
-            onClick={() => setTip(50, value)}
+            onClick={() => setTip(50, value, noOfPerson)}
           >
             50%
           </button>
@@ -90,18 +108,13 @@ const CalculatorKeypad = ({
             type="text"
             value={noOfPerson}
             class="form-control bill-input"
+            disabled={
+              !value || (predefinePercent === null && customPercent === null)
+            }
             onChange={(e) => {
-              //   setPeople(tip / parseInt(e.target.value, 10));
               setNoOfPerson(e.target.value);
             }}
           />
-
-          {/* <input
-              type="text"
-              value={noOfPerson}
-              disabled
-              class="form-control"
-            /> */}
         </div>
       </div>
     </div>

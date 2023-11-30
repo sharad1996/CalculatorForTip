@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useState } from "react";
 import CalculatorKeypad from "./CalculatorKeypad";
@@ -7,15 +6,10 @@ import CalculatorAmount from "./CalculatorAmount";
 function App() {
   const [value, setValue] = useState(0);
   const [tip, setTip] = useState(0);
-  // const [people, setPeople] = useState();
   const [custom, setCustom] = useState(false);
   const [noOfPerson, setNoOfPerson] = useState("");
   const [customPercent, setCustomPercent] = useState(null);
   const [predefinePercent, setPredefinePercent] = useState(null);
-  const [customValue, setCustomValue] = useState(null);
-
-  console.log(tip, "/////////tip");
-  // console.log(people, "////////people");
 
   const customButton = () => {
     setCustom(!custom);
@@ -29,8 +23,8 @@ function App() {
     isCustom = false
   ) => {
     if (percentage) {
-      // setTip(value);
       const calTip = (value * percentage) / 100;
+      setPredefinePercent(percentage);
       const perPersonTip = calTip / parseInt(noOfPerson || 1, 10);
       setTip(perPersonTip);
     }
@@ -44,7 +38,7 @@ function App() {
 
   const onHandleChangePerson = (noOfPerson) => {
     setNoOfPerson(noOfPerson);
-    if (noOfPerson) {
+    if (parseInt(noOfPerson, 10)) {
       calculateTip(customPercent || predefinePercent, value, noOfPerson, true);
     } else {
       setTip(0);
@@ -67,14 +61,11 @@ function App() {
               setTip={calculateTip}
               custom={custom}
               customButton={customButton}
-              setCustomValue={setCustomValue}
-              setCustomPercent={setCustomPercent}
               customPercent={customPercent}
-              customValue={customValue}
-              tip={tip}
               noOfPerson={noOfPerson}
               setNoOfPerson={onHandleChangePerson}
               onHandleCustomPercentage={onHandleCustomPercentage}
+              predefinePercent={predefinePercent}
             />
           </div>
           <div className="col-md-6 tip-amount1">
@@ -82,14 +73,10 @@ function App() {
               value={value}
               setValue={setValue}
               setTip={setTip}
-              custom={custom}
               customButton={customButton}
-              setCustomValue={setCustomValue}
               setCustomPercent={setCustomPercent}
               customPercent={customPercent}
-              customValue={customValue}
               tip={tip}
-              noOfPerson={noOfPerson}
               setNoOfPerson={setNoOfPerson}
               setCustom={setCustom}
             />

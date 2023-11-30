@@ -39,6 +39,7 @@ html body {
   position: absolute;
   bottom: 15px;
   width: 93%;
+  cursor: pointer;
 }
 
 .tip-amount {
@@ -49,6 +50,15 @@ html body {
   border: none;
   font-weight: 600;
   /* margin-right: 10px; */
+}
+
+.tip-amount-active {
+  background-color: rgba(120, 240, 223) !important;
+  color: rgba(0, 74, 75) !important ;
+  border-radius: 5px;
+  padding: 5px 20px 5px 20px;
+  border: none;
+  font-weight: 600;
 }
 
 .tip-amount1 {

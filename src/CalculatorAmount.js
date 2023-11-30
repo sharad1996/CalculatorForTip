@@ -1,26 +1,14 @@
 import React from "react";
 
 const CalculatorAmount = ({
-  noOfPerson,
   value,
   tip,
   setValue,
   setNoOfPerson,
   setTip,
   setCustom,
-  setCustomValue,
   setCustomPercent,
-  customValue,
-  custom,
 }) => {
-  const getCustomTipAmount = () => {
-    // customValue / noOfPerson
-    if (noOfPerson && customValue !== null) {
-      return customValue / noOfPerson;
-    }
-    return 0;
-  };
-
   return (
     <div>
       <div className="p-3 reset-button-margin">
@@ -29,15 +17,7 @@ const CalculatorAmount = ({
             Tip Amount <br />
             <span className="person">/person</span>
           </p>
-          <p className="amount">
-            {/* {custom ? (
-              <>{getCustomTipAmount()}</>
-            ) : (
-              <>{value || tip || noOfPerson ? <>{people}</> : 0.0}</>
-            )}
-            &nbsp; */}
-            {tip}
-          </p>
+          <p className="amount">{tip ? tip.toFixed(2) : 0}</p>
         </div>
         <div className="display d-flex justify-content-between align-items-center">
           <p className="text-white">
@@ -56,7 +36,6 @@ const CalculatorAmount = ({
             setNoOfPerson("");
             setTip("");
             setCustom("");
-            setCustomValue("");
             setCustomPercent("");
           }}
         >
